@@ -1,9 +1,18 @@
 <?php
 // Create Slim app
-$app = new \Slim\App();
+$app = new \Slim\App([
+    'log' => function () {
+        // create a log channel
+        $log = new Monolog\Logger('main');
+        $log->pushHandler(new Monolog\Handler\StreamHandler(LOGPATH, Monolog\Logger::DEBUG));
+        return $log;
+    },
+]);
 
 // Fetch DI Container
 $container = $app->getContainer();
+
+// set settings
 $container['settings']['displayErrorDetails'] = true;
 
 // Register Twig View helper
@@ -26,5 +35,11 @@ foreach(glob(ROUTEDIR . '*.php') as $router) {
     require_once $router;
 }
 
+// run
+$app->log->addInfo('RUN_APP');
+
 // Run the application
 $app->run();
+
+// end
+$app->log->addInfo('END_APP');

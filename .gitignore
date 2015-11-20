@@ -32,3 +32,6 @@ composer.lock
 
 # cache
 /templates_cache
+
+# log dir
+/runtime
