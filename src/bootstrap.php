@@ -4,11 +4,12 @@ $app = new \Slim\App();
 
 // Fetch DI Container
 $container = $app->getContainer();
+$container['settings']['displayErrorDetails'] = true;
 
 // Register Twig View helper
 $container['view'] = function ($c) {
     $view = new \Slim\Views\Twig(TEMPLATEDIR, [
-        'cache' => TEMPLATECACHEDIR
+        // 'cache' => TEMPLATECACHEDIR
     ]);
 
     // Instantiate and add Slim specific extension
@@ -24,13 +25,6 @@ $container['view'] = function ($c) {
 foreach(glob(ROUTEDIR . '*.php') as $router) {
     require_once $router;
 }
-
-// Define named route
-$app->get('/hello/{name}', function ($request, $response, $args) {
-    return $this->view->render($response, 'profile.html', [
-        'name' => $args['name']
-    ]);
-})->setName('profile');
 
 // Run the application
 $app->run();

@@ -29,3 +29,6 @@ phpunit.phar
 
 # composer lock
 composer.lock
+
+# cache
+/templates_cache

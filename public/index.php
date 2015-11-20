@@ -6,6 +6,7 @@ define("VENDORDIR", ROOT . "vendor" . DS);
 define("ROUTEDIR", ROOT . "src" . DS . "routes" . DS);
 define("TEMPLATEDIR", ROOT . "templates" . DS);
 define("TEMPLATECACHEDIR", ROOT . "templates_cache" . DS);
+define("ENV", 'dev');
 
 // Include autoload file
 if (file_exists(VENDORDIR . "autoload.php")) {
