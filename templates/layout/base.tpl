@@ -19,7 +19,6 @@
   </head>
   <body>
     {% block body %}
-    <h1>{{ name }}</h1>
     {% endblock %}
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -4,7 +4,7 @@
 - 模板引擎 twig
 - 日志 monolog
 - 前端模板 bootstrap
-- 数据库ORM Eloquent
+- 数据库ORM Doctrine
 
 ## 安装
 composer install
@@ -13,7 +13,7 @@ composer install
 nginx
 
     server {
-        listen 8860;
+        listen 80;
         index index.php;
         access_log  /var/www/log/access.log main;
         error_log   /var/www/log/error.log;
@@ -21,6 +21,10 @@ nginx
 
         location / {
             try_files $uri $uri/ /index.php$is_args$args;
+        }
+
+        location /assets {
+            alias /var/www/hosts/uI/public/assets;
         }
 
         location ~ \.php {
